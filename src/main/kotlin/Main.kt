@@ -32,6 +32,8 @@ object Main {
 
         val dictionary = readDictionary()
 
+
+        log.println("\n\n\n\nDistincted Dictionary matches count: ${words.distinct().count { it in dictionary }}")
         var count = 0
         val iter = words.iterator()
         while (iter.hasNext()) {
@@ -43,7 +45,7 @@ object Main {
             }
         }
 
-        log.println("\n\n\n\nDictionary matches count: $count")
+        log.println("Dictionary matches count: $count")
 
         for (entry in dictionary) {
             if (entry.value < 0) throw RuntimeException("kek")
@@ -51,7 +53,7 @@ object Main {
 
         dictionary.entries.removeIf { it.value <= 0 }
 
-        val sortedDict = dictionary.toList().toMutableList()
+        val sortedDict = readDictionary().toList().toMutableList()
         sortedDict.sortBy { it.second }
 
         log.println()
@@ -120,6 +122,7 @@ object Main {
         }
 
         log.println("Dictionary matches count: $count")
+        log.println("Distincted Dictionary matches count: ${words.distinct().count { it in dictionary }}")
 
     }
 
